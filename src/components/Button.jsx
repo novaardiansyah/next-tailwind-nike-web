@@ -4,7 +4,9 @@ const Button = ({ label, iconUrl }) => {
   return (
     <button className={cn('flex justify-center items-center gap-2 px-7 py-4 border border-coral-red font-montserrat text-lg leading-none bg-coral-red rounded-full text-white')}>
       {label}
-      <img src={iconUrl} alt={label} className={cn('ml-2 rounded-full w-5 h-5')} />
+      {iconUrl && (
+        <img src={iconUrl} alt={label} className={cn('ml-2 rounded-full w-5 h-5')} />
+      )}
     </button>
   )
 }
