@@ -6,7 +6,7 @@ const App = () => {
   return (
     <main className={cn('relative')}>
       <Nav />
-      <section className={cn('xl:padding-1 wide:padding-r padding-b')}>
+      <section className={cn('xl:padding-l wide:padding-r padding-b')}>
         <Hero />
       </section>
       <section className={cn('padding')}>
