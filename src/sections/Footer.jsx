@@ -1,13 +1,21 @@
 import { copyrightSign } from '../assets/icons'
 import { footerLogo } from '../assets/images'
 import { footerLinks, socialMedia } from '../constants'
+import { motion } from 'framer-motion'
 import { cn } from '../lib/utils'
+import { fadeIn } from '../lib/motion'
 
 const Footer = () => {
   return (
     <footer className={cn('max-container')}>
       <div className={cn('flex justify-between items-start gap-20 flex-wrap max-lg:flex-col')}>
-        <div className={cn('flex flex-col items-start')}>
+        <motion.div 
+          variants={fadeIn('up', 'tween', 1, 1)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.25 }}
+          className={cn('flex flex-col items-start')}
+        >
           <a href="/">
             <img src={footerLogo} alt="footer-logo" className={cn('w-[150px] h-[46px]')} />
           </a>
@@ -23,32 +31,57 @@ const Footer = () => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         <div className={cn('flex flex-1 justify-between lg:gap-10 gap-20 flex-wrap')}>
           {footerLinks.map((item, index) => (
-            <div key={`footerLink-${index}`}>
+            <motion.div 
+              variants={fadeIn('right', 'tween', index * 0.5, 1)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: false, amount: 0.25 }}
+              key={`footerLink-${index}`}
+            >
               <h4 className={cn('text-white font-montserrat text-2xl leading-normal font-medium mb-6')}>{item.title}</h4>
               
               <ul>
                 {item.links.map((link, index) => (
-                  <li key={`footer-links-${index}`} className={cn('mt-3 text-white-400 font-montserrat text-base leading-normal hover:text-slate-gray cursor-pointer')}>
+                  <motion.li 
+                    variants={fadeIn('up', 'tween', index * 0.5, 1)}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: false, amount: 0.25 }}
+                    key={`footer-links-${index}`} 
+                    className={cn('mt-3 text-white-400 font-montserrat text-base leading-normal hover:text-slate-gray cursor-pointer')}
+                  >
                     <a href={link.link}>{link.name}</a>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
 
       <div className={cn('flex justify-between text-white-400 mt-24 max-sm:flex-col max-sm:items-center max-sm:text-left gap-6')}>
-        <div className={cn('flex flex-1 justify-start items-center gap-2 font-montserrat')}>
+        <motion.div 
+          variants={fadeIn('right', 'spring', 1, 1)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.25 }}
+          className={cn('flex flex-1 justify-start items-center gap-2 font-montserrat')}
+        >
           <img src={copyrightSign} alt="copyright" className={cn('w-[20px] h-[20px] rounded-full m-0')} />
           <p>Copyright {new Date().getFullYear() != '2023' ? `2023-${new Date().getFullYear()}` : '2023' } <a href="https://novaardiansyah.site" className={cn('text-coral-red/90 hover:text-coral-red')} target="_blank" rel="noreferrer">Nova Ardiansyah</a>. All rights reserved</p>
-        </div>
+        </motion.div>
 
-        <p className={cn('font-montserrat cursor-pointer')}>Terms & Conditions</p>
+        <motion.p 
+          variants={fadeIn('left', 'spring', 1, 1)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.25 }}
+          className={cn('font-montserrat cursor-pointer')}
+        >Terms & Conditions</motion.p>
       </div>
     </footer>
   )

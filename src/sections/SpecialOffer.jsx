@@ -1,16 +1,30 @@
 import { arrowRight } from '../assets/icons'
 import { offer } from '../assets/images'
 import Button from '../components/Button'
+import { motion } from 'framer-motion'
 import { cn } from '../lib/utils'
+import { fadeIn } from '../lib/motion'
 
 const SpecialOffer = () => {
   return (
     <section className={cn('flex flex-wrap items-center max-xl:flex-col-reverse gap-10 max-container')}>
-      <div className={cn('flex-1')}>
+      <motion.div 
+        variants={fadeIn('right', 'tween', 1, 1)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: false, amount: 0.25 }}
+        className={cn('flex-1')}
+      >
         <img src={offer} className={cn('height-[687px] object-contain w-full')} />
-      </div>
+      </motion.div>
 
-      <div className={cn('flex flex-1 flex-col')}>
+      <motion.div 
+        variants={fadeIn('left', 'tween', 1, 1)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: false, amount: 0.25 }}
+        className={cn('flex flex-1 flex-col')}
+      >
         <h2 className={cn('font-palanquin text-4xl capitalize font-bold lg:max-w-lg')}>
           <span className={cn('text-coral-red')}>Special</span> Offer
         </h2>
@@ -27,7 +41,7 @@ const SpecialOffer = () => {
           <Button label="Shop now" iconUrl={arrowRight} />
           <Button label="Learn more" customClass="bg-white border-slate-gray text-slate-gray" />
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

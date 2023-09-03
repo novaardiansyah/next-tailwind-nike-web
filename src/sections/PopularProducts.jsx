@@ -1,10 +1,19 @@
 import PopularProductCard from '../components/PopularProductCard'
 import { products } from '../constants'
+import { motion } from 'framer-motion'
 import { cn } from '../lib/utils'
+import { fadeIn } from '../lib/motion'
 
 const PopularProducts = () => {
   return (
-    <section id="products" className={cn('max-container max-sm:mt-12')}>
+    <motion.section 
+      variants={fadeIn('up', 'tween', 1, 1)}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      id="products" 
+      className={cn('max-container max-sm:mt-12')}
+    >
       <div className={cn('flex flex-col justify-start gap-5')}>
         <h2 className={cn('text-4xl font-palanquin font-bold')}>
           Our <span className="text-coral-red">Popular</span> Products
@@ -18,10 +27,11 @@ const PopularProducts = () => {
           <PopularProductCard 
             key={`products-${index}`}
             {...item}
+            index={index}
           />
         ))}
       </div>
-    </section>
+    </motion.section>
   )
 }
 
