@@ -1,11 +1,19 @@
 import { shoe8 } from '../assets/images'
 import Button from '../components/Button'
+import { motion } from 'framer-motion'
 import { cn } from '../lib/utils'
+import { fadeIn } from '../lib/motion'
 
 const SuperQuality = () => {
   return (
     <section id="about-us" className={cn('flex justify-between items-center max-lg:flex-col gap-10 w-full max-container')}>
-      <div className={cn('flex flex-1 flex-col')}>
+      <motion.div 
+        variants={fadeIn('right', 'tween', 1, 1)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: false, amount: 0.25 }}
+        className={cn('flex flex-1 flex-col')}
+      >
         <h2 className={cn('font-palanquin text-4xl capitalize font-bold lg:max-w-lg')}>
           We Provide You <span className={cn('text-coral-red')}>Super Quality</span> Shoes
         </h2>
@@ -21,11 +29,17 @@ const SuperQuality = () => {
         <div className={cn('mt-11 ')}>
           <Button label="View details" />
         </div>
-      </div>
+      </motion.div>
 
-      <div className={cn('flex flex-1 justify-center items-center')}>
+      <motion.div 
+        variants={fadeIn('left', 'tween', 1, 1)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: false, amount: 0.25 }}
+        className={cn('flex flex-1 justify-center items-center')}
+      >
         <img src={shoe8} alt="Shoe-8" className={cn('w-[570px] h-[522px] object-contain')} />
-      </div>
+      </motion.div>
     </section>
   )
 }

@@ -5,6 +5,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  overflow-x: hidden;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -16,6 +20,12 @@
   .max-container {
     max-width: 1440px;
     margin: 0 auto;
+  }
+
+  .hash-span {
+    margin-top: -100px;
+    padding-bottom: 100px;
+    display: block;
   }
 
   .input {
