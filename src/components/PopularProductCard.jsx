@@ -3,7 +3,7 @@ import { cn } from '../lib/utils'
 
 const PopularProductCard = ({ imgURL, name, price, rating }) => {
   return (
-    <div className={cn('flex flex-1 flex-col w-full max-sm:w-full')}>
+    <div className={cn('flex flex-1 flex-col w-full max-sm:w-full sm:mb-0 mb-8')}>
       <img src={imgURL} alt={name} className={cn('w-[280px] h-[280px]')} />
       
       <div className={cn('mt-8 flex justify-start gap-2.5')}>
